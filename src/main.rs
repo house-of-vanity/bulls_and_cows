@@ -4,6 +4,7 @@ use itertools::Itertools;
 use rand::Rng;
 use std::env;
 use std::io::{stdin, stdout, Write};
+mod cow;
 
 struct Game {
     _base: u8,
@@ -74,6 +75,7 @@ fn main() {
     // Parse args
     let args: Vec<String> = env::args().collect();
     let mut base = 4;
+    cow::print_cow();
     if args.len() == 2 {
         base = args[1].parse::<u8>().unwrap();
     }
