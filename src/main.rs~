@@ -2,8 +2,8 @@ extern crate rand;
 
 use itertools::Itertools;
 use rand::Rng;
-use std::env;
 use std::io::{stdin, stdout, Write};
+use std::env;
 
 struct Game {
     _base: u8,
@@ -78,17 +78,14 @@ fn main() {
         base = args[1].parse::<u8>().unwrap();
     }
     println!("Starting a new game!\nType <help> for help.\nType <answer> for answer.");
-    let help_text = format!(
-        "+++++++++++++++++
+    let help_text = format!("+++++++++++++++++
     Computer generate {} digits. You have to guess them.
     Type digits, eg: 1234 and
     computer returns you a number of
     Cows - count of right digits.
     Bulls - count of right and in place digits.
     You have to guess all digits in its places.
-+++++++++++++++++",
-        base
-    );
++++++++++++++++++", base);
     let mut game = Game::new(base);
     game.start();
     let mut input = String::new();
@@ -108,12 +105,12 @@ fn main() {
             input.pop();
         }
         if input.as_str() == "answer" {
-            println!("Base: {}, Generated board: {:?}", game.base(), game.board());
+            println!(
+                "Base: {}, Generated board: {:?}",
+                game.base(), game.board()
+            );
             continue;
-        } else if input.as_str() == "help" {
-            println!("{}", help_text);
-            continue;
-        }
+        } else if input.as_str() == "help" {println!("{}", help_text);continue;}
         remove_whitespace(&mut input);
         match input.parse::<i32>() {
             Err(_) => {
