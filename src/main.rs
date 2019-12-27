@@ -35,7 +35,10 @@ impl Game {
         for _i in 0..self._base {
             self._board.push(rng.gen_range(0, 10));
         }
-        println!("Base: {}, Board: {:?}", self._base, self._board);
+        println!(
+            "New Game! Base: {}, Generated board: {:?}",
+            self._base, self._board
+        );
     }
 
     // Check answer
@@ -44,7 +47,6 @@ impl Game {
             panic!("Wrong parameters count.");
         }
         let uniq_answer: Vec<_> = answer.clone().into_iter().unique().collect();
-        println!("Uniq: {:?}", uniq_answer);
         let mut cows = 0;
         let mut bulls = 0;
         for i in 0..uniq_answer.len() {
@@ -74,7 +76,6 @@ fn remove_whitespace(s: &mut String) {
 fn main() {
     let mut game = Game::new(4);
     game.start();
-    println!("Base: {}, Board: {:?}", game.base(), game.board());
     let mut input = String::new();
     let mut answer: Vec<u8> = vec![];
     loop {
