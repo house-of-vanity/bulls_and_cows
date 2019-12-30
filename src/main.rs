@@ -79,7 +79,7 @@ fn main() {
     if args.len() == 2 {
         base = args[1].parse::<u8>().unwrap();
     }
-    println!("Starting a new game!\nType <help> for help.\nType <answer> for answer.");
+    println!("=> Starting a new game!\n=> Type <help> for help.\n=> Type <answer> for answer.\n=> You can change initial base by passing argument like ./game 5");
     let help_text = format!(
         "+++++++++++++++++
     Computer generate {} digits. You have to guess them.
@@ -120,7 +120,7 @@ fn main() {
         remove_whitespace(&mut input);
         match input.parse::<i32>() {
             Err(_) => {
-                println!("Invalid input");
+                println!("Invalid input.");
                 continue;
             }
             _ => {}
