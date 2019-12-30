@@ -99,7 +99,7 @@ fn main() {
     loop {
         input.clear();
         answer.clear();
-        print!("Please enter your variant: ");
+        print!("[{:>03}] Please enter your variant: ", attempt);
         let _ = stdout().flush();
         stdin()
             .read_line(&mut input)
