@@ -92,6 +92,7 @@ fn main() {
         base
     );
     let mut game = Game::new(base);
+    let mut attempt = 0;
     game.start();
     let mut input = String::new();
     let mut answer: Vec<u8> = vec![];
@@ -133,9 +134,11 @@ fn main() {
         }
 
         println!("You typed: {:?}", answer);
+        attempt += 1;
         match game.check(&answer) {
             Ok(_result) => {
-                println!("You won!");
+                println!("You won in {} attempts!", attempt);
+                attempt = 0;
                 &game.start();
             }
             Err(result) => println!("So close! Cows: {}, Bulls: {}", result.0, result.1),
